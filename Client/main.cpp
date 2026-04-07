@@ -48,6 +48,25 @@ int main() {
         send(clientSocket, iv, EVP_MAX_IV_LENGTH, 0);
         send(clientSocket, ciphertext, ciphertext_len, 0);
         std::cout << "Sent encrypted message to server." << std::endl;
+
+        // Receive IV from server
+        unsigned char recv_iv[EVP_MAX_IV_LENGTH];
+        recv(clientSocket, recv_iv, EVP_MAX_IV_LENGTH, 0);
+
+        // Receive encrypted response
+        unsigned char recv_buffer[BUFFER_SIZE];
+        int recv_len = recv(clientSocket, recv_buffer, BUFFER_SIZE, 0);
+
+        // Decrypt response
+        EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
+        unsigned char decrypted[BUFFER_SIZE];
+
+        decryptMessage(ctx, recv_buffer, recv_len, reinterpret_cast<const unsigned char*>(aes_key.c_str()), recv_iv, decrypted);
+
+        EVP_CIPHER_CTX_free(ctx);
+
+        // Display decrypted message
+        std::cout << "Server says: " << decrypted << std::endl;
     }
     close(clientSocket);
 }

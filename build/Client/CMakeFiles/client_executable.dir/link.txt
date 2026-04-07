@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/client_executable.dir/main.cpp.o CMakeFiles/client_executable.dir/client.cpp.o CMakeFiles/client_executable.dir/__/Common/common.cpp.o -o client_executable  /opt/homebrew/opt/openssl@3/lib/libssl.dylib /opt/homebrew/opt/openssl@3/lib/libcrypto.dylib

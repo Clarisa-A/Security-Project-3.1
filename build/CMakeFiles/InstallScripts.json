@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/isabellecox/Security-Project-3.1/build/cmake_install.cmake",
+		"/Users/isabellecox/Security-Project-3.1/build/Client/cmake_install.cmake",
+		"/Users/isabellecox/Security-Project-3.1/build/Server/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
